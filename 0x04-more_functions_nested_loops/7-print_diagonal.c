@@ -1,28 +1,32 @@
 #include "main.h"
 /**
- * print_line - prints
+ * print_diagonal - prints
  * @n: int
  * Return: 0
  */
 
-void print_line(int n)
+void print_diagonal(int n)
 {
+	int a, b;
+
 	if (n <= 0)
 	{
 		_putchar('\n');
 	}
 	else
 	{
-		int x, y;
-
-		for (x = 0; x < n; x++)
+		for (a = 0; a <= n; a++)
 		{
-			for (y = 0; y < n; y++)
+			for (b = 0; b <= n; b++)
 			{
-				if (y == x)
+				if (b == a)
+				{
 					_putchar('\\');
-				else if (y < x)
-				       _putchar(' ');
+				}
+				else if (b < a)
+				{
+					_putchar(' ');
+				}
 			}
 			_putchar('\n');
 		}
