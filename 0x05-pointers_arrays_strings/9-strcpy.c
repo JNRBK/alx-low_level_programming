@@ -2,7 +2,7 @@
 /**
  * _strcpy - copies
  * @dest: a buffer
- * @src: src string
+ * @src: source
  * Return: dest
  */
 
@@ -15,5 +15,6 @@ char *_strcpy(char *dest, char *src)
 		dest[i] = src[i];
 		i++;
 	}
+	dest[i] = '\0';
 	return (dest);
 }
