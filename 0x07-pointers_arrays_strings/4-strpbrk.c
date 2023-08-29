@@ -9,8 +9,8 @@
 
 char *_strpbrk(char *s, char *accept)
 {
-	char *raf;
+	char *ptr;
 
-	raf = strpbrk(s, accept);
-	return (raf);
+	ptr = strpbrk(s, accept);
+	return (ptr);
 }
