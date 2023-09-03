@@ -8,33 +8,36 @@
 */
 int main(int argc, char *argv[])
 {
-	int m;
-	int cent = atoi(argv[1]);
-	int rest = 0;
-	int change[] = {25, 10, 5, 2, 1};
+	int cent, change;
 
-	if (argc == 2)
-	{
-		for (m = 0; m < 5; m++)
-		{
-			if (cent >= change[m])
-			{
-				rest += cent / change[m];
-				cent = cent % change[m];
-				if (cent % change[m] == 0)
-				{
-					break;
-				}
-
-			}
-		}
-		printf("%d\n", rest);
-
-	}
-	else
+	if (argc != 2)
 	{
 		printf("Error\n");
 		return (1);
 	}
+	cent = atoi(argv[1]);
+
+	if (cent < 0)
+	{
+		printf("0\n");
+		return (0);
+	}
+	change = 0;
+
+	change += cent / 25;
+	cent %= 25;
+
+	change += cent / 10;
+	cent %= 10;
+
+	change += cent / 5;
+	cent %= 5;
+
+	change += cent / 2;
+	cent %= 2;
+
+	change += cent;
+
+	printf("%d\n", change);
 	return (0);
 }
