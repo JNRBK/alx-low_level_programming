@@ -1,1 +1,2 @@
-pointers - arrays - strings
+# project 6:
+## Pointers_arrays_strings
