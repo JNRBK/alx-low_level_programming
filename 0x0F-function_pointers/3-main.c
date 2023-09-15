@@ -14,16 +14,16 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	char *calc;
 	int num1, num2;
 
-	calc = argv[2];
-	num1 = atoi(argv[1]);
-	num2 = atoi(argv[3]);
 
 	if (argc != 4)
 	{
 		printf("Error\n");
 		exit(98);
 	}
-	if (calc[1] != '\0' && get_op_func(calc) == NULL)
+	num1 = atoi(argv[1]);
+	calc = argv[2];
+	num2 = atoi(argv[3]);
+	if (calc[1] != '\0' || get_op_func(calc) == NULL)
 	{
 		printf("Error\n");
 		exit(99);
