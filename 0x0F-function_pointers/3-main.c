@@ -1,6 +1,15 @@
+#include "3-calc.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include "function_pointers.h"
+/**
+ * main - main function
+ * @argc: count
+ * @argv: arg v
+ * Return: 0
+*/
 
-int main(argc, char *argv[])
+int main(int __attribute__((__unused__)) argc, char *argv[])
 {
 	char *calc;
 	int num1, num2;
@@ -14,21 +23,17 @@ int main(argc, char *argv[])
 		printf("Error\n");
 		exit(98);
 	}
-	if (calc != "+"
-	|| calc != "-"
-	|| calc != "*"
-	|| calc != "/"
-	|| calc != "%")
-		{
-			printf("Error\n");
-			exit(99);
-		}
-	if (calc == "/" && num2 == 0
-	|| calc == "%" && num2 == 0)
+	if (calc[1] != '\0' && get_op_func(calc) == NULL)
+	{
+		printf("Error\n");
+		exit(99);
+	}
+	if ((*calc == '/' && num2 == 0)
+	|| (*calc == '%' && num2 == 0))
 	{
 		printf("Error\n");
 		exit(100);
 	}
-	printf("%d", get_op_func(calc)(num1, num2));
+	printf("%d\n", get_op_func(calc)(num1, num2));
 	return (0);
 }
