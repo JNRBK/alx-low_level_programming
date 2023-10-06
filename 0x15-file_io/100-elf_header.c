@@ -45,17 +45,22 @@ void check_elf(unsigned char *e_ident)
 */
 void print_magic(unsigned char *e_ident)
 {
-	int i;
+		int i;
 
-	printf("  Magic:    ");
-	for (i = 0, i < EI_NIDENT; i++)
-	{
-		printf("%02x", e_ident[i]);
+		printf("  Magic:    ");
+
+		for (i = 0; i < EI_NIDENT; i++)
+		{
+			printf("%02x", e_ident[i]);
 		if (i == EI_NIDENT - 1)
+		{
 			printf("\n");
+		}
 		else
+		{
 			printf(" ");
-	}
+		}
+		}
 }
 /**
  * print_class - prints class of an elf
@@ -161,7 +166,7 @@ void print_osabi(unsigned char *e_ident)
 				printf("Standalone App\n");
 				break;
 		default:
-				printf("<unknown: %x>\n", e_ident[EL_OSABI]);
+				printf("<unknown: %x>\n", e_ident[EI_OSABI]);
 	}
 }
 /**
@@ -181,10 +186,10 @@ void print_abi(unsigned char *e_ident)
 void print_type(unsigned int e_Type, unsigned char *e_ident)
 {
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
-		e_type >>= 8;
+		e_Type >>= 8;
 	printf("  Type:                           ");
 
-	switch (e_type)
+	switch (e_Type)
 	{
 		case ET_NONE:
 				printf("NONE (None)\n");
@@ -202,7 +207,7 @@ void print_type(unsigned int e_Type, unsigned char *e_ident)
 				printf("CORE (core file)\n");
 				break;
 		default:
-				printf("<unknown: %x>\n", e_type);
+				printf("<unknown: %x>\n", e_Type);
 	}
 }
 /**
@@ -250,43 +255,43 @@ void close_elf(int elf)
 */
 int main(int __attribute__((__unused__)) argc, char *argv[])
 {
-	Elf64_Ehdr *x;
-	int fo, r;
+	Elf64_Ehdr *header;
+	int o, r;
 
-	fo = open(argv[1], O_RDONLY);
-	if (fo == -1)
+	o = open(argv[1], O_RDONLY);
+	if (o == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
 	}
-	x = malloc(sizeof(Elf64_Ehdr));
-	if (x == NULL)
+	header = malloc(sizeof(Elf64_Ehdr));
+	if (header == NULL)
 	{
-		close_elf(fo);
+		close_elf(o);
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
 	}
-	r = read(fo, x, sizeof(Elf64_Ehdr));
+	r = read(o, header, sizeof(Elf64_Ehdr));
 	if (r == -1)
 	{
-		free(x);
-		close_elf(fo);
+		free(header);
+		close_elf(o);
 		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]);
 		exit(98);
 	}
 
-	check_elf(x->e_ident);
+	check_elf(header->e_ident);
 	printf("ELF Header:\n");
-	print_magic(x->e_ident);
-	print_class(x->e_ident);
-	print_data(x->e_ident);
-	print_version(x->e_ident);
-	print_osabi(x->e_ident);
-	print_abi(x->e_ident);
-	print_type(x->e_type, x->e_ident);
-	print_entry(x->e_entry, x->e_ident);
+	print_magic(header->e_ident);
+	print_class(header->e_ident);
+	print_data(header->e_ident);
+	print_version(header->e_ident);
+	print_osabi(header->e_ident);
+	print_abi(header->e_ident);
+	print_type(header->e_type, header->e_ident);
+	print_entry(header->e_entry, header->e_ident);
 
-	free(x);
-	close_elf(fo);
+	free(header);
+	close_elf(o);
 	return (0);
 }
