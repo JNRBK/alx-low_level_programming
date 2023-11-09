@@ -1,3 +1,3 @@
-# Double Linked Lists :laugh:
-> HELP
+# 😕: Double Linked Lists::laughing:
+*HELP*
 ##  :cry:
