@@ -1,6 +1,6 @@
 #include "lists.h"
 /**
- * dlistint_t - print the elements length
+ * dlistint_len - print the elements length
  * @h: pointer to head
  * Return: length
 */
