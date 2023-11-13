@@ -1,1 +1,1 @@
-# C <sub>Dynamic Libraries</sub>
+# C <sup>Dynamic Libraries</sup>
