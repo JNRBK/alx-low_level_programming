@@ -10,7 +10,7 @@
  */
 int main(void)
 {
-    hash_table_t *ht;
+    hash_table_t *htas;
 
     ht = hash_table_create(1024);
     printf("%p\n", (void *)ht);
