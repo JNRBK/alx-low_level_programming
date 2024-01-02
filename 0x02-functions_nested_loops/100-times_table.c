@@ -13,9 +13,12 @@ void print_times_table(int n)
 	{
 		for (row = 0; row <= n; row++)
 		{
-			for (column = 0; column <= n; column++)
+			_putchar('0');
+			for (column = 1; column <= n; column++)
 			{
 
+				_putchar(',');
+				_putchar(' ');
 				times = row * column;
 			/*handeling 100s place*/
 				if (times >= 100)
@@ -30,11 +33,6 @@ void print_times_table(int n)
 			/*handeling 1s place*/
 				_putchar(times % 10 + '0');
 
-				if (column < n)
-				{
-					_putchar(',');
-					_putchar(' ');
-				}
 			}
 			_putchar('\n');
 		}
