@@ -6,27 +6,19 @@
 
 int main(void)
 {
-	int a;
-	unsigned long int b = 0, c = 1, d;
+	long int a = 0;
+	unsigned long int previous = 0, current = 1,  sum_fib;
 
-	for (a = 0; a < 50; a++)
+	while (current <= 4000000)
 	{
-        if (a % 2 == 0)
-        {
-
-            d = b + c;
-            printf("%lu", d);
-            b = c;
-            c = d;
-            if (a == 49)
-            {
-                printf("\n");
-            }
-            else
-            {
-                printf(", ");
-            }
-        }
+		if (current % 2 == 0)
+		{
+			a += current;
+		}
+		sum_fib = previous + current;
+		previous = current;
+		current = sum_fib;
 	}
+	printf("%lu\n", a);
 	return (0);
 }
