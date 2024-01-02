@@ -1,26 +1,42 @@
 #include "main.h"
+/**
+ * print_times_table - function that calculate and times n
+ * @n: int representing the number of multiplication
+ * Return: none , void
+*/
 void print_times_table(int n)
 {
-	int a, b, c;
-
-	for (a = 0; a <= n; a++)
+	int row, column, times;
+	/*requirement: if n is greater than 15 or less than 0*/
+	/*function should print nothing*/
+	if (!(n > 15 || n < 0))
 	{
-		_putchar('0');
-
-		for (b = 0; b <= n; b++)
+		for (row = 0; row <= n; row++)
 		{
-			_putchar(',');
-			_putchar(' ');
+			for (column = 0; column <= n; column++)
+			{
 
-			c = a * b;
+				times = row * column;
+			/*handeling 100s place*/
+				if (times >= 100)
+					_putchar((times / 100) + '0');
+				else
+					_putchar(' ');
+			/*handeling 10s place*/
+				if (times >= 10)
+					_putchar(((times / 10) % 10) + '0');
+				else
+					_putchar(' ');
+			/*handeling 1s place*/
+				_putchar(times % 10 + '0');
 
-			if (c < n)
-				_putchar(' ');
-			else if (c > 100)
-				_putchar(c / 10);
-			_putchar(c % 10 + '0');
+				if (column < n)
+				{
+					_putchar(',');
+					_putchar(' ');
+				}
+			}
+			_putchar('\n');
 		}
-		_putchar('\n');
 	}
 }
-	
