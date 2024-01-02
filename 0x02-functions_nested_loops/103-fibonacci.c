@@ -1,0 +1,32 @@
+#include <stdio.h>
+/**
+ * main - main function
+ * Return: 0
+ */
+
+int main(void)
+{
+	int a;
+	unsigned long int b = 0, c = 1, d;
+
+	for (a = 0; a < 50; a++)
+	{
+        if (a % 2 == 0)
+        {
+
+            d = b + c;
+            printf("%lu", d);
+            b = c;
+            c = d;
+            if (a == 49)
+            {
+                printf("\n");
+            }
+            else
+            {
+                printf(", ");
+            }
+        }
+	}
+	return (0);
+}
