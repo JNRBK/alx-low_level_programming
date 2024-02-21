@@ -6,10 +6,10 @@ NAME = school
 all: ${OBJ}
 	${CC} ${OBJ} -o ${NAME}
 
+RM = rm -f
 clean:
-	rm -f ${NAME}
+	${RM} ${NAME} *~
 oclean:
-	rm -f ${OBJ}
-fclean:
-	rm -f ${OBJ}
-	rm -f ${NAME}
+	${RM} ${OBJ}
+fclean: clean oclean
+re: fclean all
