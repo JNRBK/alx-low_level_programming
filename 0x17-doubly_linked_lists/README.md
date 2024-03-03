@@ -1,3 +1,4 @@
-# 😕: Double Linked Lists😆
->  C Makes you ask for  *HELP* 
-##  :cry:
+# Double Linked Lists
+```
+    C Makes you ask for  *HELP* 
+```
