@@ -1,4 +1,4 @@
 # Double Linked Lists
 ```
-    C Makes you ask for  *HELP* 
+    C Makes you ask for HELP
 ```
